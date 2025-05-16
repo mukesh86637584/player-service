@@ -25,7 +25,9 @@ describe('Resolvers:', () => {
       const result = await resolvers.Query.players();
 
       expect(mockLogger.info).toHaveBeenCalledWith('Fetching players list...');
-      expect(mockLogger.info).toHaveBeenCalledWith('Players list fetched successfully');
+      expect(mockLogger.info).toHaveBeenCalledWith(
+        'Players list fetched successfully'
+      );
       expect(result).toEqual(players);
     });
 
@@ -36,9 +38,10 @@ describe('Resolvers:', () => {
       expect(mockLogger.info).toHaveBeenCalledWith('Fetching players list...');
     });
 
-
     it('should throw error if id not provided', async () => {
-      await expect(resolvers.Query.player(null, { id: 0 })).rejects.toThrow(CustomError);
+      await expect(resolvers.Query.player(null, { id: 0 })).rejects.toThrow(
+        CustomError
+      );
       expect(mockLogger.error).toHaveBeenCalledWith('Player ID not provided');
     });
 
@@ -51,7 +54,9 @@ describe('Resolvers:', () => {
 
       const result = await resolvers.Query.player(null, { id: 1 });
 
-      expect(mockLogger.info).toHaveBeenCalledWith('Fetching player with ID: 1');
+      expect(mockLogger.info).toHaveBeenCalledWith(
+        'Fetching player with ID: 1'
+      );
       expect(mockLogger.info).toHaveBeenCalledWith('Player found: 1');
       expect(result).toEqual(players[0]);
     });
@@ -63,14 +68,20 @@ describe('Resolvers:', () => {
       ];
       mockFetchPlayers.mockResolvedValue(players);
 
-      await expect(resolvers.Query.player(null, { id: 999 })).rejects.toThrow(CustomError);
-      expect(mockLogger.error).toHaveBeenCalledWith('Player not found with ID: 999');
+      await expect(resolvers.Query.player(null, { id: 999 })).rejects.toThrow(
+        CustomError
+      );
+      expect(mockLogger.error).toHaveBeenCalledWith(
+        'Player not found with ID: 999'
+      );
     });
 
     it('should throw CustomError when fetchPlayers fails', async () => {
       mockFetchPlayers.mockRejectedValue(new Error('DB failure'));
 
-      await expect(resolvers.Query.player(null, { id: 1 })).rejects.toThrow(CustomError);
+      await expect(resolvers.Query.player(null, { id: 1 })).rejects.toThrow(
+        CustomError
+      );
     });
   });
 });

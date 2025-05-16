@@ -16,7 +16,10 @@ export const resolvers = {
       }
     },
 
-    player: async (_: unknown, { id }: { id: number }): Promise<Player | null> => {
+    player: async (
+      _: unknown,
+      { id }: { id: number }
+    ): Promise<Player | null> => {
       logger.info(`Fetching player with ID: ${id}`);
 
       if (!id) {
