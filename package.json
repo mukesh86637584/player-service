@@ -1,10 +1,11 @@
 {
-  "name": "eurosport-test",
+  "name": "player-service",
   "version": "1.0.0",
   "description": "Nodejs backend test",
   "main": "dist/server.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "test": "jest --no-cache --config jest.config.js",
+    "start": "node dist/src/server.js",
     "prebuild": "rm -rf ./dist",
     "build": "tsc"
   },
@@ -23,10 +24,17 @@
     "apollo-server": "^3.13.0",
     "dotenv": "^16.5.0",
     "graphql": "^16.11.0",
-    "node-fetch": "^3.3.2",
-    "nodemon": "^3.1.10"
+    "node-fetch": "^2.7.0",
+    "nodemon": "^3.1.10",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-typescript": "^7.27.1",
+    "@types/jest": "^29.5.14",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.3",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }

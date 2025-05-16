@@ -8,14 +8,12 @@ export async function fetchPlayers(): Promise<Player[]> {
   }
   const response = await fetch(DATA_URL);
 
-  // Check if the response is JSON
   if (!response.ok) {
     throw new Error(`Failed to fetch data: ${response.statusText}`);
   }
 
   const data = (await response.json()) as unknown;
 
-  // Validate if the data matches the expected ApiResponse structure
   if (typeof data === 'object' && data !== null && 'players' in data) {
     return (data as ApiResponse).players.sort((a, b) => a.id - b.id);
   }

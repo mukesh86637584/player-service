@@ -29,6 +29,6 @@ export const typeDefs = gql`
 
   type Query {
     players: [Player!]!
-    player(id: ID!): Player
+    player(id: Int!): Player
   }
 `;
