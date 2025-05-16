@@ -27,13 +27,17 @@ The **EuroSport-test** project is a server application that provides APIs to han
 
 ### Step 2: Build the Project
 
+* Create .env file simillar to .env.example Set env veriable:
+
+### Step 3: Build the Project
+
 * Run the build script to compile TypeScript to JavaScript:
 
   ```bash
   npm run build
   ```
 
-### Step 3: Start the Server
+### Step 4: Start the Server
 
 * Start the server using the following command:
 
@@ -42,7 +46,7 @@ The **EuroSport-test** project is a server application that provides APIs to han
   ```
 * The server will be ready to handle API calls.
 
-### Step 4: Access the API
+### Step 5: Access the API
 
 * Copy the server URL from the terminal and paste it into your browser to test the API.
 
