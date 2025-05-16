@@ -9,12 +9,12 @@ jest.mock('../../../utils/logger');
 const mockFetchPlayers = fetchPlayers as jest.Mock;
 const mockLogger = logger as jest.Mocked<typeof logger>;
 
-describe('Resolvers', () => {
+describe('Resolvers:', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  describe('Query.players', () => {
+  describe('Query:', () => {
     it('should return list of players', async () => {
       const players = [
         { id: 1, firstname: 'John', lastname: 'Doe' } as any,
@@ -35,13 +35,7 @@ describe('Resolvers', () => {
       await expect(resolvers.Query.players()).rejects.toThrow(CustomError);
       expect(mockLogger.info).toHaveBeenCalledWith('Fetching players list...');
     });
-  });
 
-  describe('Query.player', () => {
-    const players = [
-      { id: 1, firstname: 'John', lastname: 'Doe' } as any,
-      { id: 2, firstname: 'Jane', lastname: 'Smith' } as any,
-    ];
 
     it('should throw error if id not provided', async () => {
       await expect(resolvers.Query.player(null, { id: 0 })).rejects.toThrow(CustomError);
@@ -49,6 +43,10 @@ describe('Resolvers', () => {
     });
 
     it('should return player when found', async () => {
+      const players = [
+        { id: 1, firstname: 'John', lastname: 'Doe' } as any,
+        { id: 2, firstname: 'Jane', lastname: 'Smith' } as any,
+      ];
       mockFetchPlayers.mockResolvedValue(players);
 
       const result = await resolvers.Query.player(null, { id: 1 });
@@ -59,6 +57,10 @@ describe('Resolvers', () => {
     });
 
     it('should throw error when player not found', async () => {
+      const players = [
+        { id: 1, firstname: 'John', lastname: 'Doe' } as any,
+        { id: 2, firstname: 'Jane', lastname: 'Smith' } as any,
+      ];
       mockFetchPlayers.mockResolvedValue(players);
 
       await expect(resolvers.Query.player(null, { id: 999 })).rejects.toThrow(CustomError);
